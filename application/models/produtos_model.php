@@ -13,4 +13,13 @@ Class Produtos_model extends CI_Model {
 
 	}
 
+	public function busca($id) {
+
+		$produto = $this->db->get_where("produto",array(
+			"id"=>$id))->row_array();
+
+		return $produto;
+
+	}
+
 }

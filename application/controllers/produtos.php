@@ -34,4 +34,14 @@ Class Produtos extends CI_Controller {
 
 	}
 
+	public function mostra($id) {
+		$this->load->model("produtos_model");
+		$produto = $this->produtos_model->busca($id);
+		$this->load->helper("typography");
+		$dados = array("produto"=>$produto);
+
+
+		$this->load->view('produtos/mostra',$dados);
+	}
+
 }

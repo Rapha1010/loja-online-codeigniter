@@ -7,7 +7,6 @@
 <body>
 	<div class="container">
 
-
 	<?php if($this->session->flashdata("success")) : ?>
 	<p class="alert alert-success"><?= $this->session->flashdata("success")?></p>
 	<?php endif ?>
@@ -19,7 +18,12 @@
 		<table class="table">
 		<?php
 		foreach($produtos as $produto) {
-		echo '<tr><td>'.$produto['nome'].'<td/><td>'.numeroEmReais($produto['preco']).'</td></tr>';
+		echo '
+		<tr>
+			<td>'.anchor("produtos/{$produto['id']}",$produto['nome']).'<td/>
+			<td>'.character_limiter($produto['descricao'],10).'<td/>
+			<td>'.numeroEmReais($produto['preco']).'</td>
+		</tr>';
 		}
 		?>
 		</table>
