@@ -19,6 +19,7 @@
 		<h1>Login</h1>
 
 	<?php if($this->session->userdata("usuario_logado")) : ?>
+		<?= anchor('produtos/formulario',"Cadastrar novo Produto",array("class"=>"btn btn-primary")); ?>
 		<?= anchor('login/logout','Logout', array("class"=>"btn btn-primary")); ?>
 
 	<?php else :?>
