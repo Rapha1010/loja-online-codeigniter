@@ -20,11 +20,12 @@ Class Produtos extends CI_Controller {
 	}
 
 	public function novo() {
-
+		$usuariologado = $this->session->userdata("usuario_logado");
 		$produto = array(
 			"nome"=>$this->input->post("nome"),
 			"descricao"=>$this->input->post("descricao"),
-			"preco"=>$this->input->post("preco"));
+			"preco"=>$this->input->post("preco"),
+			"usuario_id"=>$usuariologado["id"]);
 
 		$this->load->model("produtos_model");
 		$this->produtos_model->salvar($produto);
