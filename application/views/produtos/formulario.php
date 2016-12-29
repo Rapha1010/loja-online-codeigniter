@@ -17,21 +17,27 @@ echo form_input(array(
 	"id"=>"nome",
 	"name"=>"nome",
 	"class"=>"form-control",
-	"maxlength"=>"255"));
+	"maxlength"=>"255",
+	"value"=>set_value("nome","")));
+echo form_error("nome");
 
 echo form_label("Preço","preco");
 echo form_input(array(
 	"id"=>"preco",
 	"name"=>"preco",
 	"class"=>"form-control",
-	"maxlength"=>"255"));
+	"maxlength"=>"255",
+	"value"=>set_value("preco","")));
+echo form_error("preco");
 
 echo form_label("Descricao","descricao");
 echo form_textarea(array(
 	"id"=>"descricao",
 	"name"=>"descricao",
 	"class"=>"form-control",
-	"maxlength"=>"255"));
+	"maxlength"=>"255",
+	"value"=>set_value("descricao","")));
+echo form_error("descricao");
 
 echo form_button(array(
 	"content"=>"Cadastrar Produtos",
