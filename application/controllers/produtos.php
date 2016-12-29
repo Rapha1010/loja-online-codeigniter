@@ -25,8 +25,6 @@ Class Produtos extends CI_Controller {
 		$this->form_validation->set_rules("descricao","descricao","trim|required|min_length[10]");
 		$this->form_validation->set_error_delimiters("<p class='alert alert-danger'>","</p>");
 
-
-
 		$sucesso = $this->form_validation->run();
 		if($sucesso) {
 			$usuariologado = $this->session->userdata("usuario_logado");
@@ -56,6 +54,21 @@ Class Produtos extends CI_Controller {
 
 
 		$this->load->view('produtos/mostra',$dados);
+	}
+
+
+	public function nao_tem_a_palavra_melhor($nome){
+		$posicao = strpos($nome,"melhor");
+
+		// 	$this->form_validation->set_message("nao_tenha_a_palavra_melhor","o campo '%s' não pode conter a palavra melhor");
+		// if($posicao){
+		// 	return true;
+
+		// } else {
+		// 	return false;
+		// }
+
+
 	}
 
 }
