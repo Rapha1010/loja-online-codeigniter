@@ -12,17 +12,22 @@ Class Produtos extends CI_Controller {
 
 		$dados = array("produtos"=>$produtos);
 		$this->load->helper(array("currency"));
-		$this->load->view("produtos/index.php",$dados);
+		
+		$this->load->template("produtos/index.php",$dados);
+		
 	}
 
 	public function formulario() {
-		$this->load->view("produtos/formulario");
+		autoriza();
+		$this->load->template("produtos/formulario");
 	}
 
 	public function novo() {
+		autoriza();
 		$this->load->library("form_validation");
-		$this->form_validation->set_rules("nome","nome","trim|required|min_length[5]");
-		$this->form_validation->set_rules("descricao","descricao","trim|required|min_length[10]");
+		$this->form_validation->set_rules("nome","Nome","trim|required|min_length[5]|callback_nao_tenha_a_palavra_melhor");
+		$this->form_validation->set_rules("preco","Preço","trim|required");
+		$this->form_validation->set_rules("descricao","Descrição","trim|required|min_length[10]");
 		$this->form_validation->set_error_delimiters("<p class='alert alert-danger'>","</p>");
 
 		$sucesso = $this->form_validation->run();
@@ -40,7 +45,7 @@ Class Produtos extends CI_Controller {
 			redirect("/");
 		} else {
 
-			$this->load->view('produtos/formulario');
+			$this->load->template('produtos/formulario');
 
 		}
 
@@ -52,21 +57,17 @@ Class Produtos extends CI_Controller {
 		$this->load->helper("typography");
 		$dados = array("produto"=>$produto);
 
-
-		$this->load->view('produtos/mostra',$dados);
+		$this->load->template('produtos/mostra',$dados);
 	}
 
-
-	public function nao_tem_a_palavra_melhor($nome){
+	public function nao_tenha_a_palavra_melhor($nome){
 		$posicao = strpos($nome,"melhor");
-
-		// 	$this->form_validation->set_message("nao_tenha_a_palavra_melhor","o campo '%s' não pode conter a palavra melhor");
-		// if($posicao){
-		// 	return true;
-
-		// } else {
-		// 	return false;
-		// }
+		if($posicao){
+			return true;
+		 } else {
+			$this->form_validation->set_message("nao_tenha_a_palavra_melhor","o campo '%s' não pode conter a palavra melhor");
+		 	return false;
+		 }
 
 
 	}

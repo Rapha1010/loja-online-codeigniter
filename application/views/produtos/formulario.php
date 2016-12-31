@@ -1,12 +1,3 @@
-<html>
-<head>
-<link rel="stylesheet" href="<?= base_url("css/bootstrap.css");?>">
-	<title>produtos</title>
-</head>
-<body>
-
-<div class="container">
-
 <h1>Cadastro de produtos</h1>
 
 <?php
@@ -48,7 +39,3 @@ echo form_button(array(
 echo form_close();
 
 ?>
-</div>
-
-</body>
-</html>

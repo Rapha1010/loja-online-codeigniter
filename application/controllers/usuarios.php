@@ -15,7 +15,9 @@ Class Usuarios extends CI_Controller {
 		$this->load->database();
 		$this->load->model('usuarios_model');
 		$this->usuarios_model->salva($usuario);
-		$this->load->view("usuarios/novo");
+
+		$this->session->set_flashdata("success"," Usuário cadastrado");
+		redirect("/");
 	}
 
 
